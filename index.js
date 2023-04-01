@@ -48,6 +48,13 @@ app.get('/stream/:videoId', (req, res) => {
   }
 });
 
+// Route to download a video
+app.get('/download/:videoId', (req, res) => {
+  const videoId = req.params.videoId;
+  const videoPath = path.join(__dirname, 'uploads', videoId);
+  res.download(videoPath);
+});
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
